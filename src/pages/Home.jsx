@@ -22,7 +22,6 @@ const Home = () => {
   const { items, status } = useSelector((state) => state.pizza);
 
   const { searchValue } = React.useContext(SearchContext);
-  //const [isLoading, setIsLoading] = React.useState(true);
 
   const onChangeCategory = (id) => {
     dispatch(setCategoryId(id));
