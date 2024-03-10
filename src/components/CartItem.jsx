@@ -2,7 +2,7 @@ import React from "react";
 import { addItem, minusItem, removeItem } from "../redux/slices/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-const CartItem = ({ id, title, type,size, price, count, imageUrl }) => {
+const CartItem = ({ id, title, type, size, price, count, imageUrl }) => {
   const dispatch = useDispatch();
   const cartItem = useSelector((state) => state.cart.items.find((obj) => obj.id === id));
 
@@ -30,7 +30,9 @@ const CartItem = ({ id, title, type,size, price, count, imageUrl }) => {
 
       <div className="cart__item-info">
         <h3>{title}</h3>
-        <p>{type}, {size} см.</p>
+        <p>
+          {type}, {size} см.
+        </p>
       </div>
 
       <div className="cart__item-count">
