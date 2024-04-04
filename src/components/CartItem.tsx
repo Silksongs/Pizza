@@ -1,13 +1,32 @@
 import React from "react";
-import { addItem, minusItem, removeItem } from "../redux/slices/cartSlice";
+import { addItem, minusItem, removeItem } from "../redux/slices/cart/slice";
+import { CartItem } from "../redux/slices/cart/types";
 import { useDispatch, useSelector } from "react-redux";
 
-const CartItem = ({ id, title, type, size, price, count, imageUrl }) => {
+type CartItemProps = {
+  id: string;
+  title: string;
+  type: string;
+  size: number;
+  price: number;
+  count: number;
+  imageUrl: string;
+};
+
+const CartItemBlock: React.FC<CartItemProps> = ({
+  id,
+  title,
+  type,
+  size,
+  price,
+  count,
+  imageUrl,
+}) => {
   const dispatch = useDispatch();
-  const cartItem = useSelector((state) => state.cart.items.find((obj) => obj.id === id));
+  const cartItem = useSelector((state: any) => state.cart.items.find((obj: any) => obj.id === id));
 
   const onClickPlus = () => {
-    dispatch(addItem({ id }));
+    dispatch(addItem({ id } as CartItem));
   };
   const onClickMinus = () => {
     if (cartItem.count > 1) {
@@ -111,4 +130,4 @@ const CartItem = ({ id, title, type, size, price, count, imageUrl }) => {
   );
 };
 
-export default CartItem;
+export default CartItemBlock;
